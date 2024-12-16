@@ -1,2 +1,10 @@
 # go-boilerplate-app
-Command Line Interface
+Main branch test module 
+
+```
+# Run 
+go run .
+
+# Run test
+go test -v .
+```
