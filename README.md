@@ -6,5 +6,5 @@ Main branch test module
 go run .
 
 # Run test
-go test -v .
+go test -v ./...
 ```
