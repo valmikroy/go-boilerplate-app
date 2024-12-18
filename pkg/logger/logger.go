@@ -17,6 +17,7 @@ var appLogger *log.MyLogger
 
 func init() {
 	log.Logger().SetOutput(os.Stdout)
+	// Default log level
 	log.Logger().SetLevel(getLogLevel(constants.DEFAULT_LOG_LEVEL))
 	log.Logger().SetFormatter(&logrus.TextFormatter{
 		TimestampFormat: time.RFC3339,

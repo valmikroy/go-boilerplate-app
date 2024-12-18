@@ -53,6 +53,7 @@ func init() {
 
 func initEnv() {
 	if config.DevModeFlag {
+		// Changing to Dev log level
 		logger.SetDevMode()
 	}
 }
