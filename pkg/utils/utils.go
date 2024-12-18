@@ -1,12 +1,18 @@
 package utils
 
-func String_one() string {
-	ret := "Hello World +" // initialize and assign a string
-	return ret
-}
+import (
+	"fmt"
+	"strings"
+)
 
-func String_two() string {
-	var ret = "Hello World +" + "+" // this is another way of initalizing variable compare to line 10 above
-	// along with string concatnation example
-	return ret
+func ResolveArgs(args []string) map[string]string {
+	m := make(map[string]string)
+	for _, arg := range args {
+		parts := strings.Split(arg, "=")
+		if len(parts) < 2 {
+			panic(fmt.Sprintf("Invalid argument (format: <key>=<value>): %s", arg))
+		}
+		m[parts[0]] = parts[1]
+	}
+	return m
 }
