@@ -1,4 +1,8 @@
 # go-boilerplate-app
+
+This application effort adopted from [go-boilerplate](https://github.com/codoworks/go-boilerplate) to understand the go app structures.
+
+
 Main branch test module 
 
 ```
@@ -10,5 +14,5 @@ go test -v ./...
 ```
 
 
-### CLI improvement 
+### TODO
 - Introduce Viper for configuration file management
