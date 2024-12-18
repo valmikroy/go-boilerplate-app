@@ -3,6 +3,8 @@ package tasks
 import (
 	"fmt"
 
+	"go-boilerplate-app/pkg/logger"
+
 	"github.com/spf13/cobra"
 )
 
@@ -10,6 +12,7 @@ var FirstCmdParam string
 var SecondCmdParam string
 
 func SimpleTask(cmd *cobra.Command, args []string) {
+	logger.Info("Simple Task execution")
 	str := String_one(FirstCmdParam) // Initialized and assigned
 	fmt.Println(str)
 

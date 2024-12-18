@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
 	"runtime/debug"
 	"strings"
@@ -9,6 +8,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"go-boilerplate-app/pkg/config"
+	"go-boilerplate-app/pkg/logger"
 )
 
 var Version string
@@ -43,14 +43,22 @@ func init() {
 	rootCmd.PersistentFlags().BoolVarP(&config.EnvModeFlag, "env", "e", false, "Print environment before execution")
 	rootCmd.PersistentFlags().StringVarP(&config.LogLevelFlag, "log", "l", "", "Log Level")
 
+	cobra.OnInitialize(initEnv)
+
 	// Register persistent function for all commands
 	rootCmd.PersistentPreRun = func(cmd *cobra.Command, args []string) {
 		execRootPersistentPreRun()
 	}
 }
 
+func initEnv() {
+	if config.DevModeFlag {
+		logger.SetDevMode()
+	}
+}
+
 func execRootPersistentPreRun() {
-	fmt.Println("Executing root cmd persistent pre run ...")
+	logger.Debug("Executing root cmd persistent pre run ...")
 
 	// You can initialize other features here ...
 	// this will run before any command, make sure to put only global initializations here

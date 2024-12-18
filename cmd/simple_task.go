@@ -16,9 +16,13 @@ var simpleTaskCmd = &cobra.Command{
 
 func init() {
 
+	// Persistant flag
 	simpleTaskCmd.PersistentFlags().StringVarP(&tasks.FirstCmdParam, "first", "f", "", "First Param")
+	// Required of persistant flag
 	simpleTaskCmd.MarkPersistentFlagRequired("first")
-	simpleTaskCmd.PersistentFlags().StringVarP(&tasks.SecondCmdParam, "second", "s", "", "Second Param")
+
+	// Non-Persistant flag - will not passed down to subcommand
+	simpleTaskCmd.Flags().StringVarP(&tasks.SecondCmdParam, "second", "s", "", "Second Param")
 	// Register version command
 	rootCmd.AddCommand(simpleTaskCmd)
 }
