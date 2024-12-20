@@ -16,3 +16,4 @@ go test -v ./...
 
 ### TODO
 - Introduce Viper for configuration file management
+- Log level parameter checks

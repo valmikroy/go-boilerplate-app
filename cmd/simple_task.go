@@ -23,6 +23,7 @@ func init() {
 
 	// Non-Persistant flag - will not passed down to subcommand
 	simpleTaskCmd.Flags().StringVarP(&tasks.SecondCmdParam, "second", "s", "", "Second Param")
-	// Register version command
+
+	// Register version command to upstream rootCmd
 	rootCmd.AddCommand(simpleTaskCmd)
 }
