@@ -3,6 +3,8 @@ package cmd
 import (
 	"fmt"
 
+	"go-boilerplate-app/pkg/config"
+
 	"github.com/spf13/cobra"
 )
 
@@ -21,5 +23,5 @@ func init() {
 
 func execVersionCmd(cmd *cobra.Command, args []string) {
 	// Version is set in main.go
-	fmt.Printf("v%s\n", Version)
+	fmt.Printf("v%s\n", config.Version)
 }

@@ -49,6 +49,7 @@ func init() {
 	rootCmd.PersistentPreRun = func(cmd *cobra.Command, args []string) {
 		execRootPersistentPreRun()
 	}
+
 }
 
 func initEnv() {
@@ -56,6 +57,7 @@ func initEnv() {
 		// Changing to Dev log level
 		logger.SetDevMode()
 	}
+	config.Version = Version
 }
 
 func execRootPersistentPreRun() {
