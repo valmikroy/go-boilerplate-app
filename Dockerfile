@@ -1,4 +1,8 @@
-FROM golang:latest as build
+FROM golang:alpine as build
+
+# this gives statically linked binary
+# doc - https://jvns.ca/blog/2021/11/17/debugging-a-weird--file-not-found--error/
+ENV CGO_ENABLED=0 
 
 WORKDIR /app
 
@@ -16,8 +20,8 @@ RUN go build -o /boilerplate .
 FROM alpine:latest as run
 
 # Copy the application executable from the build image
-COPY --from=build /boilerplate /boilerplate
+COPY --from=build /boilerplate /bin/boilerplate
 
 WORKDIR /app
 EXPOSE 8080
-CMD ["/boilerplate --dev service"]
+CMD ["/bin/boilerplate", "--dev", "service"]
