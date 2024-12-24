@@ -30,6 +30,15 @@ curl --header "Accept: application/json" --header "Content-Type: application/jso
 ```
 
 
+# Build docker container 
+```
+# point to minikube image registary 
+eval $(minikube -p minikube docker-env)
+
+# build and push in local image registary
+docker build -t go-boilerplate-app .
+```
+
 
 ### TODO
 - Introduce Viper for configuration file management
