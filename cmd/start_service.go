@@ -22,7 +22,6 @@ func init() {
 	startServiceCmd.PersistentFlags().StringVarP(&config.HostFlag, "host", "H", constants.DEFAULT_HOST, "service host")
 	startServiceCmd.PersistentFlags().StringVarP(&config.PortFlag, "port", "P", constants.DEFAULT_PORT, "service port")
 
-	config.Version = Version
 	// Register version command to upstream rootCmd
 	rootCmd.AddCommand(startServiceCmd)
 }
