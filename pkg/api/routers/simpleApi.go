@@ -5,6 +5,7 @@ package router
 import (
 	"go-boilerplate-app/pkg/api/handlers/errors"
 	healthHandlers "go-boilerplate-app/pkg/api/handlers/healthz"
+	testHandlers "go-boilerplate-app/pkg/api/handlers/test"
 	"go-boilerplate-app/pkg/api/middlewares"
 	"go-boilerplate-app/pkg/logger"
 )
@@ -32,6 +33,9 @@ func InitSimpleAPIRouter() {
 	// healthcheck handlers
 	registerSimpleApiHealthCheckHandlers()
 
+	// Test handlers
+	registerTestApiHealthCheckHandlers()
+
 	// error handlers
 	registerSimpleApiErrorHandlers()
 
@@ -50,4 +54,9 @@ func registerSimpleApiHealthCheckHandlers() {
 func registerSimpleApiErrorHandlers() {
 	simpleAPIRouter.Echo.HTTPErrorHandler = errors.AutomatedHttpErrorHandler()
 	simpleAPIRouter.Echo.RouteNotFound("/*", errors.NotFound)
+}
+
+func registerTestApiHealthCheckHandlers() {
+	health := simpleAPIRouter.Echo.Group("/test")
+	health.GET("/rolldice", testHandlers.Rolldice)
 }
