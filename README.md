@@ -30,6 +30,22 @@ curl --header "Accept: application/json" --header "Content-Type: application/jso
 ```
 
 
+
+# test random number generator 
+
+```
+# Index (capped at 6 by default)
+curl --header "Accept: application/json" --header "Content-Type: application/json" http://localhost:8080/rolldice
+
+# GET with max (capped at 200)
+curl --header "Accept: application/json" --header "Content-Type: application/json" http://localhost:8080/rolldice/200  
+
+# POST with min and max 
+curl -d '{"min":"100", "max":"200"}' -X POST --header "Accept: application/json" --header "Content-Type: application/json" http://localhost:8080/rolldice
+
+```
+
+
 # Build docker container 
 ```
 # point to minikube image registary 

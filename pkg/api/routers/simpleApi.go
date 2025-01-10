@@ -57,6 +57,8 @@ func registerSimpleApiErrorHandlers() {
 }
 
 func registerTestApiHealthCheckHandlers() {
-	health := simpleAPIRouter.Echo.Group("/test")
-	health.GET("/rolldice", testHandlers.Rolldice)
+	test := simpleAPIRouter.Echo.Group("/rolldice")
+	test.GET("", testHandlers.Index)
+	test.GET("/:max", testHandlers.Get)
+	test.POST("", testHandlers.Post)
 }
